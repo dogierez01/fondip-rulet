@@ -49,6 +49,40 @@
             position: relative;
             z-index: 10;
         }
+        /* New Custom Popup Styles */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 50;
+        }
+        #elimination-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #e74c3c;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+            z-index: 100;
+            text-align: center;
+            width: 80%;
+            max-width: 300px;
+        }
+        #elimination-popup h2 {
+            margin-top: 0;
+            font-size: 28px;
+        }
+        #close-popup-btn {
+            background-color: white;
+            color: #e74c3c;
+            margin-top: 15px;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -61,6 +95,8 @@
         <br>
         <button id="join-btn">Join Game</button>
         <button id="start-btn" style="display:none;">Start Game (Host)</button>
+        <br><br>
+        <button id="reset-btn" style="background-color: #7f8c8d; font-size: 12px;">Reset Lobby (Host)</button>
         <div id="player-list">
             <h3>Players in Lobby:</h3>
             <ul id="players" style="list-style:none; padding:0;"></ul>
@@ -70,13 +106,20 @@
     <!-- Main Game Screen -->
     <div id="game-screen">
         <h1>Whose turn is it?</h1>
-        <h2 id="turn-indicator">Waiting for players...</h2>
         <div id="pointer">▼</div>
         <canvas id="wheelCanvas" width="300" height="300"></canvas>
         <br>
         <button id="spin-btn">Spin the Wheel!</button>
     </div>
 
-    <script src="app.js"></script>
+    <!-- Custom Elimination Popup -->
+    <div id="overlay"></div>
+    <div id="elimination-popup">
+        <h2 id="loser-name-text"></h2>
+        <p>You are eliminated! Bottoms up! 🍻</p>
+        <button id="close-popup-btn">Continue</button>
+    </div>
+
+    <script type="module" src="app.js"></script>
 </body>
 </html>
